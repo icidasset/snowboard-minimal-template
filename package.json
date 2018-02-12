@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "devDependencies": {
+    "postcss-inherit": "^4.0.0",
+    "tachyons": "^4.9.1",
+    "tachyons-build-css": "^1.6.0"
+  }
+}

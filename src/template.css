@@ -1,0 +1,122 @@
+@import "tachyons";
+
+
+/* Fonts */
+
+
+.default-font {
+  @inherit: .baskerville;
+}
+
+
+.heading-font {
+  @inherit: .avenir;
+}
+
+
+.coding-font {
+  font-family: "Hack", Consolas, monaco, monospace;
+}
+
+
+
+/* Colors */
+
+
+.accent {
+  @inherit: .light-red;
+}
+
+
+
+/* Elements */
+
+
+a {
+  @inherit: .accent, .no-underline;
+}
+
+
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+ul a,
+ol a {
+  color: inherit;
+}
+
+
+code {
+  @inherit: .coding-font, .f6;
+}
+
+
+pre code, pre code.hljs {
+  @inherit: .lh-copy, .ph4, .pv4;
+}
+
+
+h2 {
+  @inherit: .f3, .heading-font, .lh-title, .mt5, .normal;
+}
+
+
+h3 {
+  @inherit: .f4, .heading-font, .lh-title, .mt4, .normal;
+}
+
+
+h4 {
+  @inherit: .f5, .fw6, .heading-font, .lh-title, .mt4;
+}
+
+
+h5 {
+  @inherit: .f6, .fw5, .heading-font, .lh-title;
+}
+
+
+ol,
+ul {
+  @inherit: .lh-solid, .mb4;
+}
+
+
+p {
+  @inherit: .mv3;
+}
+
+
+pre {
+  @inherit: .mv4;
+  line-height: 0;
+}
+
+
+
+/* Classes */
+
+
+.mt5-divided {
+  /* Divide the .mt5 spacing equally over `margin-top` and `padding-top` */
+  /* (This is done to make the "anchoring" look nicer, ie. href) */
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+
+.summary {
+  @inherit: .bl, .bw2, .i, .lh-copy, .list, .pl3;
+}
+
+
+.table-of-contents {
+  @inherit: .heading-font, .lh-copy;
+  list-style-type: upper-roman;
+}
+
+
+.table-of-contents .table-of-contents {
+  list-style-type: circle;
+}

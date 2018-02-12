@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{.Title}}</title>
+
+  <link rel="stylesheet" href="dist/template.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.002/web/hack.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-plateau-light.min.css" />
+</head>
+<body class="default-font lh-copy near-black">
+
+  {{$container := "pa3 pa5-ns"}}
+
+
+  <!-- Title -->
+
+
+  <div class="{{$container}}">
+    <h1 class="bb bw3 dib f-headline heading-font lh-solid pb1 ttu">
+      {{.Title}}
+    </h1>
+  </div>
+
+
+
+  <!-- Introduction -->
+
+
+  <div class="{{$container}}">
+    <div class="measure">
+      {{.Description | markdownize}}
+      {{template "TableOfContents" .}}
+    </div>
+  </div>
+
+
+
+  <!-- Contents -->
+
+
+  {{range $groupN, $group := .ResourceGroups}}
+    {{template "Group" $group}}
+  {{end}}
+
+
+
+  <!---->
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/json.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jump.js/1.0.2/jump.min.js"></script>
+
+  <script>
+    hljs.initHighlightingOnLoad()
+
+    // Scroll to table-of-contents
+    document.addEventListener("keydown", event => {
+      if (event.key === "t") {
+        Jump("#table-of-contents", { duration: 250 })
+      }
+    })
+  </script>
+
+
+</body>
+</html>
+
+
+
+<!------------------------------------------------------------------->
+<!--- Templates                                                    -->
+<!------------------------------------------------------------------->
+
+
+<!-- Table of Contents -->
+
+
+{{define "TableOfContents"}}
+  <div id="table-of-contents" class="mt5-divided">
+
+    <h2 class="mt0">
+      <a href="#table-of-contents">
+        Table of Contents
+      </a>
+    </h2>
+
+    <ol class="mv4 pl4 pl5-ns table-of-contents">
+      {{range $groupN, $group := .ResourceGroups}}
+        {{$permalink := printf "%s%s" "group" ($group.Title | parameterize)}}
+
+        <li class="pl2">
+          <div class="fw6 mb2">
+            <a href="#{{$permalink}}">
+              {{if $group.Title}}
+                {{$group.Title}}
+              {{else}}
+                🌋
+              {{end}}
+            </a>
+          </div>
+
+          <ol class="pl3 pl4-ns table-of-contents">
+            {{range $resourceN, $resource := $group.Resources}}
+              {{$permalink := printf "%s%s" "resource--" ($resource.Title | parameterize)}}
+
+              <li class="pl2">
+                <a href="#{{$permalink}}">
+                  {{$resource.Title}}
+                </a>
+              </li>
+            {{end}}
+          </ol>
+        </li>
+      {{end}}
+    </ol>
+
+
+    <p class="i mt5 light-silver">
+      Press the letter <span>T</span> on your keyboard to return to the table of contents.
+    </p>
+
+  </div>
+{{end}}
+
+
+
+<!-- Group -->
+
+
+{{define "Group"}}
+
+  {{$group := .}}
+  {{$container := "pa3 pa5-ns"}}
+  {{$permalink := printf "%s%s" "group" ($group.Title | parameterize)}}
+
+
+  <hr class="b--black-05 bb bw1 mv4" id="{{$permalink}}">
+
+
+  <div class="{{$container}}">
+    <div class="b f2 heading-font lh-title mb4">
+      {{if $group.Title}}
+        {{$group.Title}}
+      {{else}}
+        🌋
+      {{end}}
+    </div>
+
+    {{$group.Description | markdownize}}
+
+    <ul class="mv4 summary">
+      {{range $resourceN, $resource := $group.Resources}}
+        {{$permalink := printf "%s%s" "resource--" ($resource.Title | parameterize)}}
+
+        <li>
+          <a href="#{{$permalink}}">
+            {{$resource.Title}}
+          </a>
+        </li>
+      {{end}}
+    </ul>
+
+    {{range $resourceN, $resource := $group.Resources}}
+      {{template "Resource" $resource}}
+    {{end}}
+  </div>
+
+{{end}}
+
+
+
+<!-- Resource -->
+
+
+{{define "Resource"}}
+
+  {{$resource := .}}
+  {{$permalink := printf "%s%s" "resource--" ($resource.Title | parameterize)}}
+
+
+  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="{{$permalink}}">
+
+
+  <h2>
+    <a href="#{{$permalink}}">
+      {{or $resource.Title $resource.Href.Path}}
+    </a>
+  </h2>
+
+
+  <div class="measure">
+    {{$resource.Description | markdownize}}
+
+    {{if (ne (len $resource.Href.Parameters) 0)}}
+      <h4>URL Parameters</h4>
+      {{template "Parameters" $resource.Href.Parameters}}
+    {{end}}
+  </div>
+
+
+  {{range $transitionN, $transition := $resource.Transitions}}
+    {{template "Transition" $transition}}
+  {{end}}
+
+{{end}}
+
+
+
+<!-- Transition -->
+
+
+{{define "Transition"}}
+
+  {{$transition := .}}
+
+
+  <h3 class="accent mt5-divided" id="{{$transition.Permalink}}">
+    <a href="#{{$transition.Permalink}}">
+      {{if $transition.Title}}
+        {{$transition.Title}}
+      {{else}}
+        {{$transition.Method}}
+      {{end}}
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    {{$transition.Description | markdownize}}
+  </div>
+
+
+  {{range $transactionN, $transaction := $transition.Transactions}}
+    <h4>
+      Request
+      {{if $transaction.Request.Title}}
+        {{$transaction.Request.Title}}
+      {{end}}
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        {{$transaction.Request.Method}} {{$transition.URL}}
+      </code>
+
+      {{$transaction.Request.Description | markdownize}}
+    </div>
+
+
+    {{if or (ne (len $transition.Href.Parameters) 0) (ne (len $transaction.Request.Headers) 0)}}
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          {{if (ne (len $transition.Href.Parameters) 0)}}
+            {{template "Parameters" $transition.Href.Parameters}}
+          {{else}}
+            <span class="light-silver dn db-l">✗</span>
+          {{end}}
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          {{template "Headers" $transaction.Request.Headers}}
+        </div>
+      </div>
+    {{end}}
+
+
+    {{if ne $transaction.Request.Body.Body ""}}
+      <pre class="w-50-l">
+        <code class="{{alias $transaction.Request.Body.ContentType}}">{{$transaction.Request.Body.Body}}</code>
+      </pre>
+    {{end}}
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: {{$transaction.Response.StatusCode}}</em>
+
+      {{if $transaction.Response.Body.ContentType}}
+        <em> &nbsp;&amp;&nbsp; Type: {{$transaction.Response.Body.ContentType}}</em>
+      {{end}}
+
+      {{$transaction.Response.Description | markdownize}}
+    </div>
+
+
+    {{if ne $transaction.Response.Body.Body ""}}
+      <pre class="w-50-l">
+        <code class="{{alias $transaction.Response.Body.ContentType}}">{{$transaction.Response.Body.Body}}</code>
+      </pre>
+    {{end}}
+  {{end}}
+
+{{end}}
+
+
+
+<!-- Parameters -->
+
+
+{{define "Parameters"}}
+  {{range $index, $param := .}}
+
+    <em>
+      {{.Key}} (type: {{.Kind}})
+      {{if .Value}} (value: {{.Value}}) {{end}}
+      {{if .Default}} (default: {{.Default}}) {{end}}
+    </em>
+
+    <div class="measure">
+      {{if .Description}}
+        {{.Description | markdownize}}
+      {{end}}
+    </div>
+
+  {{end}}
+{{end}}
+
+
+
+<!-- Headers -->
+
+
+{{define "Headers"}}
+  {{range $index, $header := .}}
+
+    <em>{{.Key}}</em>
+    <p>{{.Value}}</p>
+    <br />
+
+  {{end}}
+{{end}}

@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Gist Fox API</title>
+
+  <link rel="stylesheet" href="dist/template.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.002/web/hack.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-plateau-light.min.css" />
+</head>
+<body class="default-font lh-copy near-black">
+
+  
+
+
+  
+
+
+  <div class="pa3 pa5-ns">
+    <h1 class="bb bw3 dib f-headline heading-font lh-solid pb1 ttu">
+      Gist Fox API
+    </h1>
+  </div>
+
+
+
+  
+
+
+  <div class="pa3 pa5-ns">
+    <div class="measure">
+      <p>Gist Fox API is a <strong>pastes service</strong> similar to <a href="http://gist.github.com">GitHub&rsquo;s Gist</a>.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p><em>Gist Fox API</em> uses OAuth Authorization. First you create a new (or acquire existing) OAuth token using Basic Authentication. After you have acquired your token you can use it to access other resources within token&rsquo; scope.</p>
+
+<h2 id="media-types">Media Types</h2>
+
+<p>Where applicable this API uses the <a href="https://github.com/mikekelly/hal_specification/blob/master/hal_specification.md">HAL+JSON</a> media-type to represent resources states and affordances.</p>
+
+<p>Requests with a message-body are using plain JSON to set or update resource states.</p>
+
+<h2 id="error-states">Error States</h2>
+
+<p>The common <a href="https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md">HTTP Response Status Codes</a> are used.</p>
+
+      
+  <div id="table-of-contents" class="mt5-divided">
+
+    <h2 class="mt0">
+      <a href="#table-of-contents">
+        Table of Contents
+      </a>
+    </h2>
+
+    <ol class="mv4 pl4 pl5-ns table-of-contents">
+      
+        
+
+        <li class="pl2">
+          <div class="fw6 mb2">
+            <a href="#group">
+              
+                🌋
+              
+            </a>
+          </div>
+
+          <ol class="pl3 pl4-ns table-of-contents">
+            
+              
+
+              <li class="pl2">
+                <a href="#resource--gist-fox-api-root">
+                  Gist Fox API Root
+                </a>
+              </li>
+            
+          </ol>
+        </li>
+      
+        
+
+        <li class="pl2">
+          <div class="fw6 mb2">
+            <a href="#groupgist">
+              
+                Gist
+              
+            </a>
+          </div>
+
+          <ol class="pl3 pl4-ns table-of-contents">
+            
+              
+
+              <li class="pl2">
+                <a href="#resource--gist">
+                  Gist
+                </a>
+              </li>
+            
+              
+
+              <li class="pl2">
+                <a href="#resource--gists-collection">
+                  Gists Collection
+                </a>
+              </li>
+            
+              
+
+              <li class="pl2">
+                <a href="#resource--star">
+                  Star
+                </a>
+              </li>
+            
+          </ol>
+        </li>
+      
+        
+
+        <li class="pl2">
+          <div class="fw6 mb2">
+            <a href="#groupaccess-authorization-and-control">
+              
+                Access Authorization and Control
+              
+            </a>
+          </div>
+
+          <ol class="pl3 pl4-ns table-of-contents">
+            
+              
+
+              <li class="pl2">
+                <a href="#resource--authorization">
+                  Authorization
+                </a>
+              </li>
+            
+          </ol>
+        </li>
+      
+    </ol>
+
+
+    <p class="i mt5 light-silver">
+      Press the letter <span>T</span> on your keyboard to return to the table of contents.
+    </p>
+
+  </div>
+
+    </div>
+  </div>
+
+
+
+  
+
+
+  
+    
+
+  
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mv4" id="group">
+
+
+  <div class="pa3 pa5-ns">
+    <div class="b f2 heading-font lh-title mb4">
+      
+        🌋
+      
+    </div>
+
+    
+
+    <ul class="mv4 summary">
+      
+        
+
+        <li>
+          <a href="#resource--gist-fox-api-root">
+            Gist Fox API Root
+          </a>
+        </li>
+      
+    </ul>
+
+    
+      
+
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="resource--gist-fox-api-root">
+
+
+  <h2>
+    <a href="#resource--gist-fox-api-root">
+      Gist Fox API Root
+    </a>
+  </h2>
+
+
+  <div class="measure">
+    <p>Gist Fox API entry point.</p>
+
+<p>This resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and
+HAL links.</p>
+
+
+    
+  </div>
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-fox-api-root-retrieve-the-entry-point">
+    <a href="#gist-fox-api-root-retrieve-the-entry-point">
+      
+        Retrieve the Entry Point
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        GET /
+      </code>
+
+      
+    </div>
+
+
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 200</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/&#34; },
+        &#34;gists&#34;: { &#34;href&#34;: &#34;/gists?{since}&#34;, &#34;templated&#34;: true },
+        &#34;authorization&#34;: { &#34;href&#34;: &#34;/authorization&#34;}
+    }
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+
+
+    
+  </div>
+
+
+  
+    
+
+  
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mv4" id="groupgist">
+
+
+  <div class="pa3 pa5-ns">
+    <div class="b f2 heading-font lh-title mb4">
+      
+        Gist
+      
+    </div>
+
+    <p>Gist-related resources of <em>Gist Fox API</em>.</p>
+
+
+    <ul class="mv4 summary">
+      
+        
+
+        <li>
+          <a href="#resource--gist">
+            Gist
+          </a>
+        </li>
+      
+        
+
+        <li>
+          <a href="#resource--gists-collection">
+            Gists Collection
+          </a>
+        </li>
+      
+        
+
+        <li>
+          <a href="#resource--star">
+            Star
+          </a>
+        </li>
+      
+    </ul>
+
+    
+      
+
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="resource--gist">
+
+
+  <h2>
+    <a href="#resource--gist">
+      Gist
+    </a>
+  </h2>
+
+
+  <div class="measure">
+    <p>A single Gist object. The Gist resource is the central resource in the Gist Fox API. It represents one paste - a single text note.</p>
+
+<p>The Gist resource has the following attributes:</p>
+
+<ul>
+<li><p>id</p></li>
+
+<li><p>created_at</p></li>
+
+<li><p>description</p></li>
+
+<li><p>content</p></li>
+</ul>
+
+<p>The states <em>id</em> and <em>created_at</em> are assigned by the Gist Fox API at the moment of creation.</p>
+
+
+    
+      <h4>URL Parameters</h4>
+      
+  
+
+    <em>
+      id (type: string)
+      
+      
+    </em>
+
+    <div class="measure">
+      
+        <p>ID of the Gist in the form of a hash.</p>
+
+      
+    </div>
+
+  
+
+    <em>
+      access_token (type: string)
+      
+      
+    </em>
+
+    <div class="measure">
+      
+        <p>Gist Fox API access token.</p>
+
+      
+    </div>
+
+  
+
+    
+  </div>
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-gist-retrieve-a-single-gist">
+    <a href="#gist-gist-retrieve-a-single-gist">
+      
+        Retrieve a Single Gist
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        GET /gists/{id}{?access_token}
+      </code>
+
+      
+    </div>
+
+
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 200</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      <p>HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.</p>
+
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/gists/42&#34; },
+        &#34;star&#34;: { &#34;href&#34;: &#34;/gists/42/star&#34; },
+    },
+    &#34;id&#34;: &#34;42&#34;,
+    &#34;created_at&#34;: &#34;2014-04-14T02:15:15Z&#34;,
+    &#34;description&#34;: &#34;Description of Gist&#34;,
+    &#34;content&#34;: &#34;String contents&#34;
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-gist-edit-a-gist">
+    <a href="#gist-gist-edit-a-gist">
+      
+        Edit a Gist
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    <p>To update a Gist send a JSON with updated value for one or more of the Gist resource attributes. All attributes values (states) from the previous version of this Gist are carried over by default if not included in the hash.</p>
+
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        PATCH /gists/{id}{?access_token}
+      </code>
+
+      
+    </div>
+
+
+    
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          
+            <span class="light-silver dn db-l">✗</span>
+          
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          
+  
+
+    <em>Content-Type</em>
+    <p>application/json</p>
+    <br />
+
+  
+
+        </div>
+      </div>
+    
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;content&#34;: &#34;Updated file contents&#34;
+}
+</code>
+      </pre>
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 200</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      <p>HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.</p>
+
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/gists/42&#34; },
+        &#34;star&#34;: { &#34;href&#34;: &#34;/gists/42/star&#34; },
+    },
+    &#34;id&#34;: &#34;42&#34;,
+    &#34;created_at&#34;: &#34;2014-04-14T02:15:15Z&#34;,
+    &#34;description&#34;: &#34;Description of Gist&#34;,
+    &#34;content&#34;: &#34;String contents&#34;
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-gist-delete-a-gist">
+    <a href="#gist-gist-delete-a-gist">
+      
+        Delete a Gist
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        DELETE /gists/{id}{?access_token}
+      </code>
+
+      
+    </div>
+
+
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 204</em>
+
+      
+
+      
+    </div>
+
+
+    
+  
+
+
+  
+
+
+    
+      
+
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="resource--gists-collection">
+
+
+  <h2>
+    <a href="#resource--gists-collection">
+      Gists Collection
+    </a>
+  </h2>
+
+
+  <div class="measure">
+    <p>Collection of all Gists.</p>
+
+<p>The Gist Collection resource has the following attribute:</p>
+
+<ul>
+<li>total</li>
+</ul>
+
+<p>In addition it <strong>embeds</strong> <em>Gist Resources</em> in the Gist Fox API.</p>
+
+
+    
+  </div>
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-gists-collection-list-all-gists">
+    <a href="#gist-gists-collection-list-all-gists">
+      
+        List All Gists
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        GET /gists{?access_token,since}
+      </code>
+
+      
+    </div>
+
+
+    
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          
+            
+  
+
+    <em>
+      since (type: string)
+      
+      
+    </em>
+
+    <div class="measure">
+      
+        <p>Timestamp in ISO 8601 format: <code>YYYY-MM-DDTHH:MM:SSZ</code> Only gists updated at or after this time are returned.</p>
+
+      
+    </div>
+
+  
+
+          
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          
+  
+
+        </div>
+      </div>
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 200</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      <p>HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.</p>
+
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/gists&#34; }
+    },
+    &#34;_embedded&#34;: {
+        &#34;gists&#34;: [
+            {
+                &#34;_links&#34; : {
+                    &#34;self&#34;: { &#34;href&#34;: &#34;/gists/42&#34; }
+                },
+                &#34;id&#34;: &#34;42&#34;,
+                &#34;created_at&#34;: &#34;2014-04-14T02:15:15Z&#34;,
+                &#34;description&#34;: &#34;Description of Gist&#34;
+            }
+        ]
+    },
+    &#34;total&#34;: 1
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-gists-collection-create-a-gist">
+    <a href="#gist-gists-collection-create-a-gist">
+      
+        Create a Gist
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    <p>To create a new Gist simply provide a JSON hash of the <em>description</em> and <em>content</em> attributes for the new Gist.</p>
+
+<p>This action requires an <code>access_token</code> with <code>gist_write</code> scope.</p>
+
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        POST /gists{?access_token,since}
+      </code>
+
+      
+    </div>
+
+
+    
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          
+            
+  
+
+    <em>
+      access_token (type: string)
+      
+      
+    </em>
+
+    <div class="measure">
+      
+        <p>Gist Fox API access token.</p>
+
+      
+    </div>
+
+  
+
+          
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          
+  
+
+    <em>Content-Type</em>
+    <p>application/json</p>
+    <br />
+
+  
+
+        </div>
+      </div>
+    
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;description&#34;: &#34;Description of Gist&#34;,
+    &#34;content&#34;: &#34;String content&#34;
+}
+</code>
+      </pre>
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 201</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      <p>HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.</p>
+
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/gists/42&#34; },
+        &#34;star&#34;: { &#34;href&#34;: &#34;/gists/42/star&#34; },
+    },
+    &#34;id&#34;: &#34;42&#34;,
+    &#34;created_at&#34;: &#34;2014-04-14T02:15:15Z&#34;,
+    &#34;description&#34;: &#34;Description of Gist&#34;,
+    &#34;content&#34;: &#34;String contents&#34;
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+
+
+    
+      
+
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="resource--star">
+
+
+  <h2>
+    <a href="#resource--star">
+      Star
+    </a>
+  </h2>
+
+
+  <div class="measure">
+    <p>Star resource represents a Gist starred status.</p>
+
+<p>The Star resource has the following attribute:</p>
+
+<ul>
+<li>starred</li>
+</ul>
+
+
+    
+      <h4>URL Parameters</h4>
+      
+  
+
+    <em>
+      id (type: string)
+      
+      
+    </em>
+
+    <div class="measure">
+      
+        <p>ID of the gist in the form of a hash</p>
+
+      
+    </div>
+
+  
+
+    <em>
+      access_token (type: string)
+      
+      
+    </em>
+
+    <div class="measure">
+      
+        <p>Gist Fox API access token.</p>
+
+      
+    </div>
+
+  
+
+    
+  </div>
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-star-star-a-gist">
+    <a href="#gist-star-star-a-gist">
+      
+        Star a Gist
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    <p>This action requires an <code>access_token</code> with <code>gist_write</code> scope.</p>
+
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        PUT /gists/{id}/star{?access_token}
+      </code>
+
+      
+    </div>
+
+
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 204</em>
+
+      
+
+      
+    </div>
+
+
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-star-unstar-a-gist">
+    <a href="#gist-star-unstar-a-gist">
+      
+        Unstar a Gist
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    <p>This action requires an <code>access_token</code> with <code>gist_write</code> scope.</p>
+
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        DELETE /gists/{id}/star{?access_token}
+      </code>
+
+      
+    </div>
+
+
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 204</em>
+
+      
+
+      
+    </div>
+
+
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="gist-star-check-if-a-gist-is-starred">
+    <a href="#gist-star-check-if-a-gist-is-starred">
+      
+        Check if a Gist is Starred
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        GET /gists/{id}/star{?access_token}
+      </code>
+
+      
+    </div>
+
+
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 200</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      <p>HAL+JSON representation of Star Resource.</p>
+
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/gists/42/star&#34; },
+    },
+    &#34;starred&#34;: true
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+
+
+    
+  </div>
+
+
+  
+    
+
+  
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mv4" id="groupaccess-authorization-and-control">
+
+
+  <div class="pa3 pa5-ns">
+    <div class="b f2 heading-font lh-title mb4">
+      
+        Access Authorization and Control
+      
+    </div>
+
+    <p>Access and Control of <em>Gist Fox API</em> OAuth token.</p>
+
+
+    <ul class="mv4 summary">
+      
+        
+
+        <li>
+          <a href="#resource--authorization">
+            Authorization
+          </a>
+        </li>
+      
+    </ul>
+
+    
+      
+
+  
+  
+
+
+  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="resource--authorization">
+
+
+  <h2>
+    <a href="#resource--authorization">
+      Authorization
+    </a>
+  </h2>
+
+
+  <div class="measure">
+    <p>Authorization Resource represents an authorization granted to the user. You can <strong>only</strong> access your own authorization, and only through <strong>Basic Authentication</strong>.</p>
+
+<p>The Authorization Resource has the following attribute:</p>
+
+<ul>
+<li><p>token</p></li>
+
+<li><p>scopes</p></li>
+</ul>
+
+<p>Where <em>token</em> represents an OAuth token and <em>scopes</em> is an array of scopes granted for the given authorization. At this moment the only available scope is <code>gist_write</code>.</p>
+
+
+    
+  </div>
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="access-authorization-and-control-authorization-retrieve-authorization">
+    <a href="#access-authorization-and-control-authorization-retrieve-authorization">
+      
+        Retrieve Authorization
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        GET /authorization
+      </code>
+
+      
+    </div>
+
+
+    
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          
+            <span class="light-silver dn db-l">✗</span>
+          
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          
+  
+
+    <em>Authorization</em>
+    <p>Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+    <br />
+
+  
+
+        </div>
+      </div>
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 200</em>
+
+      
+        <em> &nbsp;&amp;&nbsp; Type: application/hal&#43;json</em>
+      
+
+      
+    </div>
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;_links&#34;: {
+        &#34;self&#34;: { &#34;href&#34;: &#34;/authorizations&#34; },
+    },
+    &#34;scopes&#34;: [
+        &#34;gist_write&#34;
+    ],
+    &#34;token&#34;: &#34;abc123&#34;
+}
+</code>
+      </pre>
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="access-authorization-and-control-authorization-create-authorization">
+    <a href="#access-authorization-and-control-authorization-create-authorization">
+      
+        Create Authorization
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        POST /authorization
+      </code>
+
+      
+    </div>
+
+
+    
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          
+            <span class="light-silver dn db-l">✗</span>
+          
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          
+  
+
+    <em>Content-Type</em>
+    <p>application/json</p>
+    <br />
+
+  
+
+    <em>Authorization</em>
+    <p>Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+    <br />
+
+  
+
+        </div>
+      </div>
+    
+
+
+    
+      <pre class="w-50-l">
+        <code class="json">{
+    &#34;scopes&#34;: [
+        &#34;gist_write&#34;
+    ]
+}
+</code>
+      </pre>
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 201</em>
+
+      
+
+      
+    </div>
+
+
+    
+  
+
+
+  
+    
+
+  
+
+
+  <h3 class="accent mt5-divided" id="access-authorization-and-control-authorization-remove-an-authorization">
+    <a href="#access-authorization-and-control-authorization-remove-an-authorization">
+      
+        Remove an Authorization
+      
+    </a>
+  </h3>
+
+
+  <div class="measure">
+    
+  </div>
+
+
+  
+    <h4>
+      Request
+      
+    </h4>
+
+
+    <div class="measure">
+      <code>
+        DELETE /authorization
+      </code>
+
+      
+    </div>
+
+
+    
+      <h5>Parameters &amp; Headers</h5>
+
+      <div class="flex-l">
+        <div class="w-50-l mb4 mb0-l">
+          
+            <span class="light-silver dn db-l">✗</span>
+          
+        </div>
+
+        <div class="w-50-l mb2 mb0-l">
+          
+  
+
+    <em>Authorization</em>
+    <p>Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+    <br />
+
+  
+
+        </div>
+      </div>
+    
+
+
+    
+
+
+    <h4>Response</h4>
+
+
+    <div class="measure">
+      <em>Status: 204</em>
+
+      
+
+      
+    </div>
+
+
+    
+  
+
+
+  
+
+
+    
+  </div>
+
+
+  
+
+
+
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/json.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jump.js/1.0.2/jump.min.js"></script>
+
+  <script>
+    hljs.initHighlightingOnLoad()
+
+    
+    document.addEventListener("keydown", event => {
+      if (event.key === "t") {
+        Jump("#table-of-contents", { duration: 250 })
+      }
+    })
+  </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
