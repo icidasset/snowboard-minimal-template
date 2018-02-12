@@ -906,6 +906,40 @@ h5 { font-size: .875rem; }
 .debug-grid-16 { background: transparent url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMklEQVR4AWOgCLz/b0epAa6UGuBOqQHOQHLUgFEDnAbcBZ4UGwDOkiCnkIhdgNgNxAYAiYlD+8sEuo8AAAAASUVORK5CYII= ) repeat 0 0; }
 .debug-grid-8-solid { background: #fff url( data:image/gif;base64,R0lGODdhCAAIAPEAAADw/wDx/////wAAACwAAAAACAAIAAACDZQvgaeb/lxbAIKA8y0AOw== ) repeat 0 0; }
 .debug-grid-16-solid { background: #fff url( data:image/gif;base64,R0lGODdhEAAQAPEAAADw/wDx/xXy/////ywAAAAAEAAQAAACIZyPKckYDQFsb6ZqD85jZ2+BkwiRFKehhqQCQgDHcgwEBQA7 ) repeat 0 0; }
+/*
+
+  CUSTOM MEDIA QUERIES
+
+  Media query values can be changed to fit your own content.
+  There are no magic bullets when it comes to media query width values.
+  They should be declared in em units - and they should be set to meet
+  the needs of your content. You can also add additional media queries,
+  or remove some of the existing ones.
+
+  These media queries can be referenced like so:
+
+  @media (--breakpoint-not-small) {
+    .medium-and-larger-specific-style {
+      background-color: red;
+    }
+  }
+
+  @media (--breakpoint-medium) {
+    .medium-screen-specific-style {
+      background-color: red;
+    }
+  }
+
+  @media (--breakpoint-large) {
+    .large-and-larger-screen-specific-style {
+      background-color: red;
+    }
+  }
+
+*/
+/* Media Queries */
+/* Base */
+html { font-size: 14px; }
 /* Fonts */
 .coding-font,
 code { font-family: "Hack", Consolas, monaco, monospace; }
@@ -2199,4 +2233,10 @@ pre { line-height: 0; }
  .v-mid-l { vertical-align: middle; }
  .v-top-l { vertical-align: top; }
  .v-btm-l { vertical-align: bottom; }
+}
+@media screen and (min-width: 30em) {
+ html { font-size: 15px; }
+}
+@media screen and (min-width: 60em) {
+ html { font-size: 16px; }
 }

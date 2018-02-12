@@ -1,4 +1,13 @@
 @import "tachyons";
+@import "tachyons/src/_media-queries.css";
+
+
+/* Base */
+
+
+html { font-size: 14px; }
+@media (--breakpoint-not-small) { html { font-size: 15px; } }
+@media (--breakpoint-large) { html { font-size: 16px; } }
 
 
 /* Fonts */
