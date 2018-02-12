@@ -1,6 +1,8 @@
 __A minimalistic template for [Snowboard](https://github.com/bukalapak/snowboard), a renderer for [API Blueprints](https://apiblueprint.org/).__  
 _Built with the tachyons css library._
 
+[🔬 Demo](https://icidasset.github.io/snowboard-minimal-template/)
+
 
 
 ## Usage
