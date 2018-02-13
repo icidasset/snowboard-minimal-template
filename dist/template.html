@@ -256,26 +256,32 @@
 
 
     {{if or (ne (len $transition.Href.Parameters) 0) (ne (len $transaction.Request.Headers) 0)}}
-      <h5>Parameters &amp; Headers</h5>
-
       <div class="flex-l">
         <div class="w-50-l mb4 mb0-l">
-          {{if (ne (len $transition.Href.Parameters) 0)}}
-            {{template "Parameters" $transition.Href.Parameters}}
+          <h5>Headers</h5>
+
+          {{if (ne (len $transaction.Request.Headers) 0)}}
+            {{template "Headers" $transaction.Request.Headers}}
           {{else}}
-            <span class="light-silver dn db-l">✗</span>
+            <span class="light-gray">✕</span>
           {{end}}
         </div>
 
-        <div class="w-50-l mb2 mb0-l">
-          {{template "Headers" $transaction.Request.Headers}}
+        <div class="w-50-l mb4 mb0-l">
+          <h5>Parameters</h5>
+
+          {{if (ne (len $transition.Href.Parameters) 0)}}
+            {{template "Parameters" $transition.Href.Parameters}}
+          {{else}}
+            <span class="light-gray">✕</span>
+          {{end}}
         </div>
       </div>
     {{end}}
 
 
     {{if ne $transaction.Request.Body.Body ""}}
-      <pre class="w-50-l">
+      <pre class="w-60-l">
         <code class="{{alias $transaction.Request.Body.ContentType}}">{{$transaction.Request.Body.Body}}</code>
       </pre>
     {{end}}
@@ -296,7 +302,7 @@
 
 
     {{if ne $transaction.Response.Body.Body ""}}
-      <pre class="w-50-l">
+      <pre class="w-60-l">
         <code class="{{alias $transaction.Response.Body.ContentType}}">{{$transaction.Response.Body.Body}}</code>
       </pre>
     {{end}}
@@ -335,9 +341,8 @@
 {{define "Headers"}}
   {{range $index, $header := .}}
 
-    <em>{{.Key}}</em>
+    <div><em>{{.Key}}</em></div>
     <p>{{.Value}}</p>
-    <br />
 
   {{end}}
 {{end}}
