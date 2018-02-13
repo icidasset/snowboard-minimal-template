@@ -15,12 +15,14 @@ const input = fs.readFileSync(
 // Output
 
 
+const minify = process.env.MINIFY === "t"
+
+
 tachyonsBuildCss(input, {
-  plugins: [
-    require("postcss-inherit")
-  ]
+  minify: minify,
+  plugins: [ require("postcss-inherit") ]
 
 }).then(result => {
-  fs.writeFileSync("dist/template.css", result.css)
+  fs.writeFileSync(`dist/template${minify ? ".min" : ""}.css`, result.css)
 
 })
