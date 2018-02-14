@@ -321,7 +321,7 @@
   {{range $index, $param := .}}
 
     <em>
-      {{.Key}} (type: {{.Kind}})
+      {{.Key}} ({{if eq .Required true}}required{{else}}optional{{end}}, type: {{.Kind}})
       {{if .Value}} (value: {{.Value}}) {{end}}
       {{if .Default}} (default: {{.Default}}) {{end}}
     </em>
