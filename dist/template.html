@@ -153,7 +153,9 @@
       {{end}}
     </div>
 
-    {{$group.Description | markdownize}}
+    <div class="measure">
+      {{$group.Description | markdownize}}
+    </div>
 
     <ul class="mv4 summary">
       {{range $resourceN, $resource := $group.Resources}}
