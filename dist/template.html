@@ -93,11 +93,11 @@
 
     <ol class="mv4 pl4 pl5-ns table-of-contents">
       {{range $groupN, $group := .ResourceGroups}}
-        {{$permalink := printf "%s%s" "group" ($group.Title | parameterize)}}
+        {{$group_permalink := (or $group.Title "root") | parameterize}}
 
         <li class="pl2">
           <div class="fw6 mb2">
-            <a href="#{{$permalink}}">
+            <a href="#{{$group_permalink}}">
               {{if $group.Title}}
                 {{$group.Title}}
               {{else}}
@@ -108,7 +108,7 @@
 
           <ol class="pl3 pl4-ns table-of-contents">
             {{range $resourceN, $resource := $group.Resources}}
-              {{$permalink := printf "%s%s" "resource--" ($resource.Title | parameterize)}}
+              {{$permalink := printf "%s-%s" $group_permalink ($resource.Title | parameterize)}}
 
               <li class="pl2">
                 <a href="#{{$permalink}}">
@@ -138,10 +138,10 @@
 
   {{$group := .}}
   {{$container := "pa3 pa5-ns"}}
-  {{$permalink := printf "%s%s" "group" ($group.Title | parameterize)}}
+  {{$group_permalink := (or $group.Title "root") | parameterize}}
 
 
-  <hr class="b--black-05 bb bw1 mv4" id="{{$permalink}}">
+  <hr class="b--black-05 bb bw1 mv4" id="{{$group_permalink}}">
 
 
   <div class="{{$container}}">
@@ -159,7 +159,7 @@
 
     <ul class="mv4 summary">
       {{range $resourceN, $resource := $group.Resources}}
-        {{$permalink := printf "%s%s" "resource--" ($resource.Title | parameterize)}}
+        {{$permalink := printf "%s-%s" $group_permalink ($resource.Title | parameterize)}}
 
         <li>
           <a href="#{{$permalink}}">
@@ -170,6 +170,19 @@
     </ul>
 
     {{range $resourceN, $resource := $group.Resources}}
+      {{$permalink := printf "%s-%s" $group_permalink ($resource.Title | parameterize)}}
+
+
+      <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="{{$permalink}}">
+
+
+      <h2>
+        <a href="#{{$permalink}}">
+          {{or $resource.Title $resource.Href.Path}}
+        </a>
+      </h2>
+
+
       {{template "Resource" $resource}}
     {{end}}
   </div>
@@ -184,17 +197,6 @@
 {{define "Resource"}}
 
   {{$resource := .}}
-  {{$permalink := printf "%s%s" "resource--" ($resource.Title | parameterize)}}
-
-
-  <hr class="b--black-05 bb bw1 mh0 mv5 mw2" id="{{$permalink}}">
-
-
-  <h2>
-    <a href="#{{$permalink}}">
-      {{or $resource.Title $resource.Href.Path}}
-    </a>
-  </h2>
 
 
   <div class="measure">
