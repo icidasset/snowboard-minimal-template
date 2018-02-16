@@ -949,6 +949,7 @@ h2 a, h3 a, h4 a, h5 a, ul a, ol a { color: inherit; }
 pre { line-height: 0; }
 /* Classes */
 .mt5-divided {/* Divide the .mt5 spacing equally over `margin-top` and `padding-top` *//* (This is done to make the "anchoring" look nicer, ie. href) */ margin-top: 2rem; padding-top: 2rem; }
+.params > div p:last-child { margin-bottom: 0; }
 .table-of-contents { list-style-type: upper-roman; }
 .table-of-contents .table-of-contents { list-style-type: circle; }
 @media screen and (min-width:30em) {

@@ -115,6 +115,11 @@ pre {
 }
 
 
+.params > div p:last-child {
+  margin-bottom: 0;
+}
+
+
 .summary {
   @inherit: .bl, .bw2, .i, .lh-copy, .list, .pl3;
 }

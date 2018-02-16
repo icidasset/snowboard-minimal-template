@@ -203,7 +203,7 @@
     {{$resource.Description | markdownize}}
 
     {{if (ne (len $resource.Href.Parameters) 0)}}
-      <h4>URL Parameters</h4>
+      <h4><span>URL Parameters</span></h4>
       {{template "Parameters" $resource.Href.Parameters}}
     {{end}}
   </div>
@@ -243,10 +243,12 @@
 
   {{range $transactionN, $transaction := $transition.Transactions}}
     <h4>
-      Request
-      {{if $transaction.Request.Title}}
-        {{$transaction.Request.Title}}
-      {{end}}
+      <span>
+        Request
+        {{if $transaction.Request.Title}}
+          {{$transaction.Request.Title}}
+        {{end}}
+      </span>
     </h4>
 
 
@@ -260,7 +262,7 @@
 
 
     {{if or (ne (len $transition.Href.Parameters) 0) (ne (len $transaction.Request.Headers) 0)}}
-      <div class="flex-l mt2">
+      <div class="flex-l mt2 params">
         <div class="w-50-l mb4 mb0-l">
           <h5>Headers</h5>
 
@@ -291,7 +293,7 @@
     {{end}}
 
 
-    <h4>Response</h4>
+    <h4><span>Response</span></h4>
 
 
     <div class="measure">
