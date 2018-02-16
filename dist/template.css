@@ -734,7 +734,8 @@ pre code.hljs { padding-left: 2rem; padding-right: 2rem; }
 .mb0 { margin-bottom: 0; }
 .mb1 { margin-bottom: .25rem; }
 .mb2 { margin-bottom: .5rem; }
-.mb3 { margin-bottom: 1rem; }
+.mb3,
+.params__description { margin-bottom: 1rem; }
 .mb4,
 ol,
 ul { margin-bottom: 2rem; }
@@ -754,7 +755,8 @@ h2 { margin-top: 4rem; }
 .mt7 { margin-top: 16rem; }
 .mv0 { margin-top: 0; margin-bottom: 0; }
 .mv1 { margin-top: .25rem; margin-bottom: .25rem; }
-.mv2 { margin-top: .5rem; margin-bottom: .5rem; }
+.mv2,
+.params__description p { margin-top: .5rem; margin-bottom: .5rem; }
 .mv3,
 p { margin-top: 1rem; margin-bottom: 1rem; }
 .mv4,
@@ -949,7 +951,7 @@ h2 a, h3 a, h4 a, h5 a, ul a, ol a { color: inherit; }
 pre { line-height: 0; }
 /* Classes */
 .mt5-divided {/* Divide the .mt5 spacing equally over `margin-top` and `padding-top` *//* (This is done to make the "anchoring" look nicer, ie. href) */ margin-top: 2rem; padding-top: 2rem; }
-.params > div p:last-child { margin-bottom: 0; }
+.params__description:last-child, .params__description p:last-child { margin-bottom: 0; }
 .table-of-contents { list-style-type: upper-roman; }
 .table-of-contents .table-of-contents { list-style-type: circle; }
 @media screen and (min-width:30em) {

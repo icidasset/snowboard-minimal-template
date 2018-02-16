@@ -262,25 +262,29 @@
 
 
     {{if or (ne (len $transition.Href.Parameters) 0) (ne (len $transaction.Request.Headers) 0)}}
-      <div class="flex-l mt2 params">
+      <div class="flex-l mt2">
         <div class="w-50-l mb4 mb0-l">
           <h5>Headers</h5>
 
-          {{if (ne (len $transaction.Request.Headers) 0)}}
-            {{template "Headers" $transaction.Request.Headers}}
-          {{else}}
-            <span class="light-gray">✕</span>
-          {{end}}
+          <div class="measure">
+            {{if (ne (len $transaction.Request.Headers) 0)}}
+              {{template "Headers" $transaction.Request.Headers}}
+            {{else}}
+              <span class="light-gray">✕</span>
+            {{end}}
+          </div>
         </div>
 
         <div class="w-50-l mb4 mb0-l">
           <h5>Parameters</h5>
 
-          {{if (ne (len $transition.Href.Parameters) 0)}}
-            {{template "Parameters" $transition.Href.Parameters}}
-          {{else}}
-            <span class="light-gray">✕</span>
-          {{end}}
+          <div class="measure">
+            {{if (ne (len $transition.Href.Parameters) 0)}}
+              {{template "Parameters" $transition.Href.Parameters}}
+            {{else}}
+              <span class="light-gray">✕</span>
+            {{end}}
+          </div>
         </div>
       </div>
     {{end}}
@@ -297,7 +301,7 @@
 
 
     <div class="measure">
-      <em>Status: {{$transaction.Response.StatusCode}}</em>
+      <em>Status: <span>{{$transaction.Response.StatusCode}}</span></em>
 
       {{if $transaction.Response.Body.ContentType}}
         <em> &nbsp;&amp;&nbsp; Type: {{$transaction.Response.Body.ContentType}}</em>
@@ -330,7 +334,7 @@
       {{if .Default}} (default: {{.Default}}) {{end}}
     </em>
 
-    <div class="measure">
+    <div class="params__description">
       {{if .Description}}
         {{.Description | markdownize}}
       {{end}}
@@ -347,8 +351,11 @@
 {{define "Headers"}}
   {{range $index, $header := .}}
 
-    <div><em>{{.Key}}</em></div>
-    <p>{{.Value}}</p>
+    <em>{{.Key}}</em>
+
+    <div class="params__description">
+      <p>{{.Value}}</p>
+    </div>
 
   {{end}}
 {{end}}

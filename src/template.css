@@ -115,7 +115,18 @@ pre {
 }
 
 
-.params > div p:last-child {
+.params__description {
+  @inherit: .mb3;
+}
+
+
+.params__description p {
+  @inherit: .mv2;
+}
+
+
+.params__description:last-child,
+.params__description p:last-child {
   margin-bottom: 0;
 }
 
